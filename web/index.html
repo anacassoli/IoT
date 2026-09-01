@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Dashboard IoT | SESI SENAI</title>
+
+<link rel="stylesheet" href="index.css">
+
+<!-- Biblioteca Paho MQTT -->
+<script src="https://unpkg.com/paho-mqtt/mqttws31.min.js"></script>
+```
+
+</head>
+
+<body>
+
+```
+<!-- CABEÇALHO -->
+<header class="header">
+    <div class="header-info">
+        <h1>🌐 Projeto IoT - Monitoramento Ambiental</h1>
+        <p><strong>Grupo:</strong>Neptunum| <strong>Turma:</strong> 3° B</p>
+    </div>
+
+    <nav class="menu">
+        <button class="nav-button active" id="btn-sobre">
+            Sobre o Projeto
+        </button>
+
+        <button class="nav-button" id="btn-dashboard">
+            Dashboard Ao Vivo
+        </button>
+    </nav>
+</header>
+
+
+<main>
+    <section id="sobre" class="pagina ativa">
+
+        <section class="apresentacao">
+            <h2>Sobre o Projeto</h2>
+
+            <p>
+                Este projeto foi desenvolvido com o objetivo de criar um
+                sistema de monitoramento ambiental utilizando tecnologias
+                de Internet das Coisas (IoT). O sistema coleta dados por
+                meio de sensores conectados ao microcontrolador e envia
+                essas informações em tempo real para um Dashboard Web.
+            </p>
+        </section>
+
+
+        <section class="cards-sobre">
+
+            <article class="card-sobre">
+                <h3>🎯 Objetivo</h3>
+
+                <p>
+                    Monitorar as condições do ambiente em tempo real,
+                    acompanhando informações como temperatura, umidade e
+                    qualidade do ar.
+                </p>
+            </article>
+
+
+            <article class="card-sobre">
+                <h3>⚙️ Hardware</h3>
+
+                <p>
+                    O projeto utiliza um microcontrolador ESP32 conectado
+                    aos sensores responsáveis pela coleta das informações
+                    ambientais.
+                </p>
+            </article>
+
+
+            <article class="card-sobre">
+                <h3>🌐 Arquitetura</h3>
+
+                <p>
+                    Os dados são enviados pelo ESP32 utilizando o protocolo
+                    MQTT. O broker recebe as mensagens e o Dashboard Web
+                    se conecta através de WebSockets para exibir os dados
+                    em tempo real.
+                </p>
+            </article>
+
+        </section>
+
+
+        <section class="galeria">
+
+            <h2>Conheça o Projeto</h2>
+
+            <div class="imagens-projeto">
+
+                <article class="imagem-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&w=800&q=80"
+                        alt="Componentes eletrônicos do projeto"
+                    >
+
+                    <h3>Componentes</h3>
+                    <p>
+                        Sensores e componentes utilizados no sistema IoT.
+                    </p>
+                </article>
+
+
+                <article class="imagem-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+                        alt="Circuito eletrônico"
+                    >
+
+                    <h3>Hardware</h3>
+                    <p>
+                        Montagem do circuito responsável pela coleta dos dados.
+                    </p>
+                </article>
+
+
+                <article class="imagem-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80"
+                        alt="Tecnologia e conexão de dados"
+                    >
+
+                    <h3>Conexão MQTT</h3>
+                    <p>
+                        Comunicação entre o dispositivo, broker e Dashboard.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <section class="arquitetura">
+            <h2>Como o Sistema Funciona?</h2>
+
+            <div class="fluxo">
+
+                <div class="fluxo-item">
+                    <span>1</span>
+                    <h3>Sensores</h3>
+                    <p>Coletam os dados do ambiente.</p>
+                </div>
+
+                <div class="seta">→</div>
+
+                <div class="fluxo-item">
+                    <span>2</span>
+                    <h3>ESP32</h3>
+                    <p>Processa as informações coletadas.</p>
+                </div>
+
+                <div class="seta">→</div>
+
+                <div class="fluxo-item">
+                    <span>3</span>
+                    <h3>MQTT Broker</h3>
+                    <p>Recebe e distribui as mensagens.</p>
+                </div>
+
+                <div class="seta">→</div>
+
+                <div class="fluxo-item">
+                    <span>4</span>
+                    <h3>Dashboard</h3>
+                    <p>Exibe os dados ao vivo.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </section>
+
+
+    <section id="dashboard" class="pagina">
+
+        <section class="dashboard-topo">
+
+            <div>
+                <h2>Dashboard Ao Vivo</h2>
+                <p>
+                    Acompanhe os dados enviados pelo dispositivo em tempo real.
+                </p>
+            </div>
+
+
+            <div class="status-container">
+                <span class="status-label">Status MQTT:</span>
+
+                <div id="status-conexao" class="status desconectado">
+                    <span class="bolinha"></span>
+                    Desconectado
+                </div>
+            </div>
+
+        </section>
+
+
+        <section class="dashboard-cards">
+
+            <!-- TEMPERATURA -->
+            <article class="card-dado temperatura">
+
+                <div class="icone">🌡️</div>
+
+                <h3>Temperatura</h3>
+
+                <div class="valor">
+                    <span id="temperatura">--</span>
+                    <small>°C</small>
+                </div>
+
+                <p>Temperatura atual do ambiente</p>
+
+            </article>
+
+
+            <!-- UMIDADE -->
+            <article class="card-dado umidade">
+
+                <div class="icone">💧</div>
+
+                <h3>Umidade</h3>
+
+                <div class="valor">
+                    <span id="umidade">--</span>
+                    <small>%</small>
+                </div>
+
+                <p>Umidade atual do ambiente</p>
+
+            </article>
+
+
+            <!-- QUALIDADE DO AR -->
+            <article class="card-dado ar">
+
+                <div class="icone">💨</div>
+
+                <h3>Qualidade do Ar</h3>
+
+                <div class="valor">
+                    <span id="qualidade-ar">--</span>
+                </div>
+
+                <p id="descricao-ar">
+                    Aguardando dados do sensor
+                </p>
+
+            </article>
+
+        </section>
+
+
+        <section class="senha-section">
+
+            <h3>🔐 Configuração do Grupo</h3>
+
+            <p>
+                Digite a senha fornecida pelo professor para o seu grupo.
+                A senha será salva no navegador utilizando localStorage.
+            </p>
+
+            <div class="senha-container">
+
+                <input
+                    type="password"
+                    id="senha-grupo"
+                    placeholder="Digite a senha do grupo"
+                >
+
+                <button id="salvar-senha">
+                    Salvar Senha
+                </button>
+
+            </div>
+
+            <p id="mensagem-senha"></p>
+
+        </section>
+
+
+        <section class="ultima-atualizacao">
+
+            <p>
+                Última atualização:
+                <strong id="ultima-atualizacao">Aguardando dados...</strong>
+            </p>
+
+        </section>
+
+
+        <!-- BANNER -->
+        <div class="banner-iot">
+            Projeto IOT SESI SENAI Vinhedo Grupo Neptunum
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- RODAPÉ -->
+<footer class="footer">
+
+    <h3>Integrantes do Grupo</h3>
+
+    <p>
+        Ana Clara Borges Cassoli
+        Anna Beatriz do Nascimento
+        Giovanna Costa Ramos 
+        Giovanna Elias Contieri
+        Lara Aparecida Soares Silva
+        Paola Rebeca Rubin Guevara
+    </p>
+
+    <p class="copyright">
+    2026 - Projeto IoT SESI SENAI Vinhedo
+    </p>
+
+</footer>
+
+
+<!-- JavaScript -->
+<script src="index.js"></script>
+```
+
+</body>
+</html>
