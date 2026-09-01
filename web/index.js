@@ -1,4 +1,3 @@
-
 const BROKER = "localhost";
 const PORT = 9001;
 
@@ -33,8 +32,6 @@ const botaoSalvarSenha =
 const mensagemSenha =
     document.getElementById("mensagem-senha");
 
-
-// Salvar senha no LocalStorage
 function salvarSenha() {
     if (!senha) return;
     if (senha.value.trim() === "") {
