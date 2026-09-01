@@ -1,0 +1,604 @@
+/* ================================
+   RESET
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+    line-height: 1.6;
+}
+
+/* ================================
+   CABEÇALHO
+================================ */
+
+.header {
+    background: linear-gradient(135deg, #0f172a, #172554, #1e3a8a);
+    color: white;
+    padding: 25px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.25);
+}
+
+.header-info h1 {
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.header-info p {
+    color: #cbd5e1;
+    font-size: 14px;
+}
+
+.header-info strong {
+    color: #60a5fa;
+}
+
+.menu {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-button {
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    color: white;
+    padding: 11px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nav-button:hover {
+    background: rgba(255,255,255,0.18);
+    transform: translateY(-2px);
+}
+
+.nav-button.active {
+    background: #3b82f6;
+    border-color: #3b82f6;
+}
+
+/* ================================
+   PÁGINAS
+================================ */
+
+.pagina {
+    display: none;
+    max-width: 1250px;
+    margin: auto;
+    padding: 45px 25px;
+}
+
+.pagina.ativa {
+    display: block;
+}
+
+/* ================================
+   APRESENTAÇÃO
+================================ */
+
+.apresentacao {
+    background: white;
+    padding: 35px;
+    border-radius: 18px;
+    margin-bottom: 30px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+}
+
+.apresentacao h2,
+.galeria h2,
+.arquitetura h2 {
+    color: #1e3a8a;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.apresentacao p {
+    color: #64748b;
+    max-width: 900px;
+}
+
+/* ================================
+   CARDS SOBRE
+================================ */
+
+.cards-sobre {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 45px;
+}
+
+.card-sobre {
+    background: white;
+    padding: 28px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    transition: 0.3s;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
+}
+
+.card-sobre:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(30, 58, 138, 0.12);
+}
+
+.card-sobre h3 {
+    color: #2563eb;
+    margin-bottom: 10px;
+}
+
+.card-sobre p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* ================================
+   GALERIA
+================================ */
+
+.galeria {
+    margin-bottom: 50px;
+}
+
+.imagens-projeto {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.imagem-card {
+    background: white;
+    border-radius: 17px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 7px 22px rgba(15, 23, 42, 0.06);
+    transition: 0.3s;
+}
+
+.imagem-card:hover {
+    transform: translateY(-5px);
+}
+
+.imagem-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    display: block;
+}
+
+.imagem-card h3 {
+    color: #1e3a8a;
+    padding: 18px 20px 5px;
+}
+
+.imagem-card p {
+    color: #64748b;
+    padding: 0 20px 20px;
+    font-size: 14px;
+}
+
+/* ================================
+   FLUXO
+================================ */
+
+.arquitetura {
+    margin-bottom: 30px;
+}
+
+.fluxo {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    box-shadow: 0 7px 22px rgba(15, 23, 42, 0.05);
+}
+
+.fluxo-item {
+    text-align: center;
+    max-width: 180px;
+}
+
+.fluxo-item span {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto auto 10px;
+    border-radius: 50%;
+    background: #2563eb;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.fluxo-item h3 {
+    color: #1e3a8a;
+    font-size: 16px;
+}
+
+.fluxo-item p {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.seta {
+    font-size: 30px;
+    color: #60a5fa;
+    font-weight: bold;
+}
+
+/* ================================
+   DASHBOARD
+================================ */
+
+.dashboard-topo {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    box-shadow: 0 7px 22px rgba(15, 23, 42, 0.05);
+}
+
+.dashboard-topo h2 {
+    color: #1e3a8a;
+    font-size: 28px;
+}
+
+.dashboard-topo p {
+    color: #64748b;
+}
+
+.status-container {
+    text-align: right;
+}
+
+.status-label {
+    display: block;
+    color: #64748b;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 13px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.status.desconectado {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.status.conectado {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.bolinha {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+/* ================================
+   CARDS DOS DADOS
+================================ */
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-bottom: 30px;
+}
+
+.card-dado {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-dado::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 4px;
+    background: #3b82f6;
+}
+
+.card-dado:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.1);
+}
+
+.card-dado .icone {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.card-dado h3 {
+    color: #334155;
+    font-size: 17px;
+}
+
+.valor {
+    margin: 10px 0;
+    font-size: 42px;
+    font-weight: 700;
+    color: #1e3a8a;
+}
+
+.valor small {
+    font-size: 18px;
+    color: #64748b;
+}
+
+.card-dado p {
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+/* ================================
+   CORES DOS CARDS
+================================ */
+
+.temperatura::before {
+    background: #f97316;
+}
+
+.temperatura .valor {
+    color: #ea580c;
+}
+
+.umidade::before {
+    background: #06b6d4;
+}
+
+.umidade .valor {
+    color: #0891b2;
+}
+
+.ar::before {
+    background: #22c55e;
+}
+
+.ar .valor {
+    color: #16a34a;
+}
+
+/* ================================
+   SENHA
+================================ */
+
+.senha-section {
+    background: white;
+    padding: 28px;
+    border-radius: 18px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 7px 22px rgba(15, 23, 42, 0.05);
+    margin-bottom: 20px;
+}
+
+.senha-section h3 {
+    color: #1e3a8a;
+    margin-bottom: 8px;
+}
+
+.senha-section p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.senha-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.senha-container input {
+    flex: 1;
+    padding: 13px 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    outline: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.senha-container input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.senha-container button {
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 13px 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.senha-container button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+#mensagem-senha {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+/* ================================
+   ÚLTIMA ATUALIZAÇÃO
+================================ */
+
+.ultima-atualizacao {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    padding: 15px 20px;
+    border-radius: 12px;
+    color: #1e40af;
+    margin-bottom: 25px;
+}
+
+/* ================================
+   BANNER
+================================ */
+
+.banner-iot {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.2);
+}
+
+/* ================================
+   RODAPÉ
+================================ */
+
+.footer {
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+    margin-top: 20px;
+}
+
+.footer h3 {
+    color: #60a5fa;
+    margin-bottom: 12px;
+}
+
+.footer p {
+    color: #cbd5e1;
+    max-width: 850px;
+    margin: auto;
+    line-height: 1.8;
+}
+
+.footer .copyright {
+    margin-top: 20px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================ */
+
+@media (max-width: 900px) {
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cards-sobre,
+    .imagens-projeto,
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .fluxo {
+        flex-direction: column;
+    }
+
+    .seta {
+        transform: rotate(90deg);
+    }
+
+    .dashboard-topo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .status-container {
+        text-align: left;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .header {
+        padding: 20px 15px;
+    }
+
+    .header-info h1 {
+        font-size: 20px;
+    }
+
+    .menu {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .nav-button {
+        width: 100%;
+    }
+
+    .pagina {
+        padding: 25px 15px;
+    }
+
+    .apresentacao,
+    .card-sobre,
+    .card-dado,
+    .senha-section {
+        padding: 22px;
+    }
+
+    .senha-container {
+        flex-direction: column;
+    }
+
+    .senha-container button {
+        width: 100%;
+    }
+
+    .valor {
+        font-size: 35px;
+    }
+}
