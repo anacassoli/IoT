@@ -1,10 +1,10 @@
+
 const BROKER = "localhost";
 const PORT = 9001;
 
 const TOPIC_TEMPERATURA = "aulas/grupo06/temperatura";
 const TOPIC_UMIDADE = "aulas/grupo06/umidade";
 const TOPIC_QUALIDADE_AR = "aulas/grupo06/qualidade_ar";
-
 
 const CLIENT_ID =
     "WebDashboard_Grupo06_" +
@@ -16,7 +16,6 @@ const client = new Paho.MQTT.Client(
     CLIENT_ID
 );
 
-
 const temperatura =
     document.getElementById("temperatura");
 const umidade =
@@ -27,30 +26,52 @@ const statusConexao =
     document.getElementById("status-conexao");
 
 
+const senha =
+    document.getElementById("senha-grupo");
+const botaoSalvarSenha =
+    document.getElementById("salvar-senha");
+const mensagemSenha =
+    document.getElementById("mensagem-senha");
 
-// Salva a senha do professor
+
+// Salvar senha no LocalStorage
 function salvarSenha() {
-    const senha =
-        document.getElementById("senha");
     if (!senha) return;
+    if (senha.value.trim() === "") {
+        if (mensagemSenha) {
+            mensagemSenha.textContent =
+                "Digite uma senha antes de salvar.";
+        }
+        return;
+    }
     localStorage.setItem(
         "senhaProfessor",
         senha.value
     );
-    alert("Senha salva com sucesso!");
+    if (mensagemSenha) {
+        mensagemSenha.textContent =
+            "Senha salva com sucesso!";
+    }
 }
 
 
-// Recupera a senha salva
+// Recuperar senha salva
 function carregarSenha() {
-    const senha =
-        document.getElementById("senha");
     if (!senha) return;
     const senhaSalva =
         localStorage.getItem("senhaProfessor");
     if (senhaSalva) {
         senha.value = senhaSalva;
     }
+}
+
+
+// Quando clicar em "Salvar Senha"
+if (botaoSalvarSenha) {
+    botaoSalvarSenha.addEventListener(
+        "click",
+        salvarSenha
+    );
 }
 
 
@@ -78,7 +99,6 @@ function atualizarStatus(conectado) {
 }
 
 
-// CONEXÃO COM MQTT
 function conectarMQTT() {
     atualizarStatus(false);
     client.connect({
@@ -90,6 +110,7 @@ function conectarMQTT() {
                 "MQTT conectado com sucesso!"
             );
             atualizarStatus(true);
+
 
             client.subscribe(
                 TOPIC_TEMPERATURA
@@ -104,13 +125,15 @@ function conectarMQTT() {
                 "Inscrito nos tópicos MQTT."
             );
         },
+
+
         onFailure: function (erro) {
             console.error(
                 "Erro ao conectar no MQTT:",
                 erro
             );
             atualizarStatus(false);
-            // Tenta novamente depois de 5 segundos
+            // Tenta novamente após 5 segundos
             setTimeout(
                 conectarMQTT,
                 5000
@@ -121,12 +144,13 @@ function conectarMQTT() {
 
 
 client.onMessageArrived = function (message) {
-
     console.log(
         "Mensagem recebida:",
         message.destinationName,
         message.payloadString
     );
+
+
     const valor =
         parseFloat(message.payloadString);
     if (isNaN(valor)) {
@@ -134,14 +158,14 @@ client.onMessageArrived = function (message) {
     }
 
 
-    // TEMPERATURA
+    // Temperatura
     if (
         message.destinationName ===
         TOPIC_TEMPERATURA
     ) {
         if (temperatura) {
             temperatura.textContent =
-                valor.toFixed(1) + " °C";
+                valor.toFixed(1);
         }
         console.log(
             "Temperatura:",
@@ -150,14 +174,14 @@ client.onMessageArrived = function (message) {
     }
 
 
-    // UMIDADE
+    // Umidade
     else if (
         message.destinationName ===
         TOPIC_UMIDADE
     ) {
         if (umidade) {
             umidade.textContent =
-                valor.toFixed(1) + " %";
+                valor.toFixed(1);
         }
         console.log(
             "Umidade:",
@@ -166,7 +190,7 @@ client.onMessageArrived = function (message) {
     }
 
 
-    // QUALIDADE DO AR
+    // Qualidade do ar
     else if (
         message.destinationName ===
         TOPIC_QUALIDADE_AR
@@ -180,10 +204,24 @@ client.onMessageArrived = function (message) {
             valor
         );
     }
+
+
+    // Atualiza o horário
+    atualizarHorario();
 };
 
+function atualizarHorario() {
+    const elemento =
+        document.getElementById(
+            "ultima-atualizacao"
+        );
+    if (!elemento) return;
+    const agora = new Date();
+    elemento.textContent =
+        agora.toLocaleTimeString("pt-BR");
+}
 
-// CONEXÃO MQTT PERDIDA
+
 client.onConnectionLost =
     function (responseObject) {
         atualizarStatus(false);
@@ -205,45 +243,36 @@ client.onConnectionLost =
         );
     };
 
-// NAVEGAÇÃO ENTRE AS ABAS
-
 function mostrarPagina(pagina) {
     const sobre =
         document.getElementById("sobre");
     const dashboard =
         document.getElementById("dashboard");
     const botoes =
-        document.querySelectorAll(".menu-btn");
-
-
-    // Esconde as páginas
+        document.querySelectorAll(".nav-button");
     if (sobre) {
         sobre.style.display = "none";
     }
     if (dashboard) {
         dashboard.style.display = "none";
     }
-    // Remove o botão ativo
     botoes.forEach(function (botao) {
-        botao.classList.remove("ativo");
+       botao.classList.remove("active");
     });
 
-
-    // SOBRE O PROJETO
     if (pagina === "sobre") {
-
         if (sobre) {
             sobre.style.display = "block";
         }
         const botao =
-            document.getElementById("btn-sobre");
+            document.getElementById(
+                "btn-sobre"
+            );
         if (botao) {
-            botao.classList.add("ativo");
+            botao.classList.add("active");
         }
     }
 
-
-    // DASHBOARD
     else if (pagina === "dashboard") {
         if (dashboard) {
             dashboard.style.display = "block";
@@ -253,22 +282,48 @@ function mostrarPagina(pagina) {
                 "btn-dashboard"
             );
         if (botao) {
-            botao.classList.add("ativo");
+            botao.classList.add("active");
         }
     }
 }
 
+// Botão Sobre
+const btnSobre =
+    document.getElementById("btn-sobre");
+if (btnSobre) {
+    btnSobre.addEventListener(
+        "click",
+        function () {
+            mostrarPagina("sobre");
 
-// INICIALIZAÇÃO
+        }
+    );
+}
+
+// Botão Dashboard
+const btnDashboard =
+    document.getElementById(
+        "btn-dashboard"
+    );
+if (btnDashboard) {
+    btnDashboard.addEventListener(
+        "click",
+        function () {
+            mostrarPagina("dashboard");
+        }
+    );
+}
+
+
 document.addEventListener(
     "DOMContentLoaded",
-    function () {
+        function () {
         console.log(
             "Dashboard IoT Grupo 06 iniciado."
         );
-        // Carrega senha
+        // Recupera senha
         carregarSenha();
-        // Abre a página Sobre
+        // Página inicial
         mostrarPagina("sobre");
         // Conecta ao MQTT
         conectarMQTT();
