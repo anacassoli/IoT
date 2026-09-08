@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard IoT | SESI SENAI</title>
+
+<link rel="stylesheet" href="../index.css">
+</head>
+
+<body>
+
+
+<header class="header">
+
+    <div class="header-info">
+
+        <h1>🌐 Projeto IoT - Monitoramento Ambiental</h1>
+
+        <p>
+            <strong>Grupo:</strong> Neptunum |
+            <strong>Turma:</strong> 3° B
+        </p>
+
+    </div>
+
+
+    <nav class="menu">
+
+        <a href="index.html" class="nav-button">
+            Início
+        </a>
+
+        <a href="projeto.html" class="nav-button">
+            Sobre o Projeto
+        </a>
+
+        <a href="dashboard.html" class="nav-button active">
+            Dashboard Ao Vivo
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    <section class="dashboard-topo">
+
+        <div>
+
+            <h2>Dashboard Ao Vivo</h2>
+
+            <p>
+                Acompanhe os dados enviados pelo dispositivo em tempo real.
+            </p>
+
+        </div>
+
+
+        <div class="status-container">
+
+            <span class="status-label">
+                Status MQTT:
+            </span>
+
+            <div id="status-conexao" class="status desconectado">
+
+                <span class="bolinha"></span>
+
+                Desconectado
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="dashboard-cards">
+
+
+        <!-- TEMPERATURA -->
+
+        <article class="card-dado temperatura">
+
+            <div class="icone">
+                🌡️
+            </div>
+
+            <h3>
+                Temperatura
+            </h3>
+
+            <div class="valor">
+
+                <span id="temperatura">
+                    --
+                </span>
+
+                <small>
+                    °C
+                </small>
+
+            </div>
+
+            <p>
+                Temperatura atual do ambiente
+            </p>
+
+        </article>
+
+
+        <!-- UMIDADE -->
+
+        <article class="card-dado umidade">
+
+            <div class="icone">
+                💧
+            </div>
+
+            <h3>
+                Umidade
+            </h3>
+
+            <div class="valor">
+
+                <span id="umidade">
+                    --
+                </span>
+
+                <small>
+                    %
+                </small>
+
+            </div>
+
+            <p>
+                Umidade atual do ambiente
+            </p>
+
+        </article>
+
+
+        <!-- QUALIDADE DO AR -->
+
+        <article class="card-dado ar">
+
+            <div class="icone">
+                💨
+            </div>
+
+            <h3>
+                Qualidade do Ar
+            </h3>
+
+            <div class="valor">
+
+                <span id="qualidade-ar">
+                    --
+                </span>
+
+            </div>
+
+            <p id="descricao-ar">
+                Aguardando dados do sensor
+            </p>
+
+        </article>
+
+
+    </section>
+
+
+    <section class="senha-section">
+
+        <h3>
+            🔐 Configuração do Grupo
+        </h3>
+
+        <p>
+            Digite a senha fornecida pelo professor para o seu grupo.
+            A senha será salva no navegador utilizando localStorage.
+        </p>
+
+
+        <div class="senha-container">
+
+            <input
+                type="password"
+                id="senha-grupo"
+                placeholder="Digite a senha do grupo"
+            >
+
+            <button id="salvar-senha">
+                Salvar Senha
+            </button>
+
+        </div>
+
+
+        <p id="mensagem-senha"></p>
+
+    </section>
+
+
+    <section class="ultima-atualizacao">
+
+        <p>
+
+            Última atualização:
+
+            <strong id="ultima-atualizacao">
+                Aguardando dados...
+            </strong>
+
+        </p>
+
+    </section>
+
+
+    <div class="banner-iot">
+
+        Projeto IOT SESI SENAI Vinhedo Grupo Neptunum
+
+    </div>
+
+</main>
+
+
+<footer class="footer">
+
+    <h3>
+        Integrantes do Grupo
+    </h3>
+
+    <p>
+        Ana Clara Borges Cassoli |
+        Anna Beatriz do Nascimento |
+        Giovanna Costa Ramos |
+        Giovanna Elias Contieri |
+        Lara Aparecida Soares Silva |
+        Paola Rebeca Rubin Guevara
+    </p>
+
+    <p class="copyright">
+        2026 - Projeto IoT SESI SENAI Vinhedo
+    </p>
+
+</footer>
+
+
+<!-- Paho MQTT -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js"></script>
+
+<!-- JavaScript do projeto -->
+
+<script src="../index.js"></script>
+
+</body>
+
+</html>
