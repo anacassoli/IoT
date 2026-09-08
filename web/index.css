@@ -1,28 +1,17 @@
-/* ================================
-   RESET
-   Remove margens e espaçamentos
-   padrões do navegador.
-================================ */
 
-/* Aplica essas configurações em todos os elementos */
 * {
-    margin: 0; /* Remove a margem padrão */
-    padding: 0; /* Remove o espaçamento interno padrão */
-    box-sizing: border-box; /* Facilita o controle do tamanho dos elementos */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Configurações gerais da página */
 body {
-    font-family: "Segoe UI", Arial, sans-serif; /* Define a fonte */
-    background: #f4f7fb; /* Cor de fundo da página */
-    color: #1f2937; /* Cor padrão dos textos */
-    line-height: 1.6; /* Espaçamento entre as linhas */
+    font-family: "Segoe UI", Arial, sans-serif; 
+    background: #f4f7fb; 
+    color: #1f2937; 
+    line-height: 1.6;
 }
 
-
-/* ================================
-   CABEÇALHO
-================================ */
 
 /* Estiliza o cabeçalho */
 .header {
@@ -53,10 +42,6 @@ body {
     color: #60a5fa; /* Cor azul clara */
 }
 
-
-/* ================================
-   MENU
-================================ */
 
 /* Organiza os botões do menu */
 .menu {
@@ -89,10 +74,6 @@ body {
 }
 
 
-/* ================================
-   PÁGINAS
-================================ */
-
 /* Configuração geral das páginas */
 .pagina {
     display: none; /* Esconde a página */
@@ -106,10 +87,6 @@ body {
     display: block;
 }
 
-
-/* ================================
-   APRESENTAÇÃO
-================================ */
 
 /* Caixa de apresentação do projeto */
 .apresentacao {
@@ -137,9 +114,6 @@ body {
 }
 
 
-/* ================================
-   CARDS SOBRE
-================================ */
 
 /* Organiza os cards em uma grade */
 .cards-sobre {
@@ -178,9 +152,6 @@ body {
 }
 
 
-/* ================================
-   GALERIA
-================================ */
 
 /* Espaçamento da galeria */
 .galeria {
@@ -230,10 +201,6 @@ body {
     font-size: 14px; /* Tamanho do texto */
 }
 
-
-/* ================================
-   FLUXO
-================================ */
 
 /* Espaçamento da seção */
 .arquitetura {
@@ -294,9 +261,6 @@ body {
 }
 
 
-/* ================================
-   DASHBOARD
-================================ */
 
 /* Cabeçalho do Dashboard */
 .dashboard-topo {
@@ -323,9 +287,6 @@ body {
 }
 
 
-/* ================================
-   STATUS DA CONEXÃO
-================================ */
 
 /* Área do status */
 .status-container {
@@ -364,10 +325,6 @@ body {
 }
 
 
-/* ================================
-   BOLINHA DO STATUS
-================================ */
-
 /* Cria a bolinha ao lado do status */
 .bolinha {
     width: 9px; /* Largura */
@@ -376,10 +333,6 @@ body {
     background: currentColor; /* Usa a mesma cor do texto */
 }
 
-
-/* ================================
-   CARDS DOS DADOS
-================================ */
 
 /* Organiza os cards de temperatura, umidade e ar */
 .dashboard-cards {
@@ -451,10 +404,6 @@ body {
 }
 
 
-/* ================================
-   CORES DOS CARDS
-================================ */
-
 /* Cor específica da temperatura */
 .temperatura::before {
     background: #f97316; /* Faixa laranja */
@@ -482,10 +431,6 @@ body {
     color: #16a34a; /* Número verde */
 }
 
-
-/* ================================
-   SENHA
-================================ */
 
 /* Área da senha */
 .senha-section {
@@ -558,10 +503,6 @@ body {
 }
 
 
-/* ================================
-   ÚLTIMA ATUALIZAÇÃO
-================================ */
-
 /* Caixa que mostra o horário da última atualização */
 .ultima-atualizacao {
     background: #eff6ff; /* Fundo azul claro */
@@ -572,10 +513,6 @@ body {
     margin-bottom: 25px; /* Espaço abaixo */
 }
 
-
-/* ================================
-   BANNER
-================================ */
 
 /* Banner de informações sobre IoT */
 .banner-iot {
@@ -589,10 +526,6 @@ body {
     box-shadow: 0 8px 25px rgba(37, 99, 235, 0.2); /* Sombra */
 }
 
-
-/* ================================
-   RODAPÉ
-================================ */
 
 /* Estilo do rodapé */
 .footer {
@@ -623,9 +556,7 @@ body {
     color: #64748b; /* Cor cinza */
     font-size: 13px; /* Tamanho pequeno */
 }
-/* ================================
-   RESPONSIVIDADE
-================================ */
+
 
 /* Configurações para telas menores que 900px */
 @media (max-width: 900px) {
