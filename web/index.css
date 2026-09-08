@@ -117,14 +117,15 @@ body {
 
 /* Organiza os cards em uma grade */
 .cards-sobre {
-    display: grid; /* Cria uma grade */
-    grid-template-columns: repeat(3, 1fr); /* Cria 3 colunas */
+    display: flex; /* Cria uma grade */
+    flex-direction: row; /* Cria 3 colunas */
     gap: 20px; /* Espaço entre os cards */
     margin-bottom: 45px; /* Espaço abaixo */
 }
 
 /* Estilo de cada card */
 .card-sobre {
+    flex: 1;
     background: white; /* Fundo branco */
     padding: 28px; /* Espaçamento interno */
     border-radius: 16px; /* Cantos arredondados */
@@ -160,13 +161,14 @@ body {
 
 /* Organiza as imagens em 3 colunas */
 .imagens-projeto {
-    display: grid; /* Cria uma grade */
-    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    display: flex; /* Cria uma grade */
+    flex-direction: row; /* 3 colunas */
     gap: 22px; /* Espaço entre as imagens */
 }
 
 /* Card que contém cada imagem */
 .imagem-card {
+    flex: 1;
     background: white; /* Fundo branco */
     border-radius: 17px; /* Cantos arredondados */
     overflow: hidden; /* Esconde o que ultrapassar o card */
@@ -336,14 +338,15 @@ body {
 
 /* Organiza os cards de temperatura, umidade e ar */
 .dashboard-cards {
-    display: grid; /* Cria uma grade */
-    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    display: flex; /* Cria uma grade */
+    flex-direction: row; /* 3 colunas */
     gap: 22px; /* Espaço entre os cards */
     margin-bottom: 30px; /* Espaço abaixo */
 }
 
 /* Estilo dos cards */
 .card-dado {
+    flex: 1;
     background: white; /* Fundo branco */
     padding: 30px; /* Espaçamento */
     border-radius: 18px; /* Cantos arredondados */
@@ -571,7 +574,7 @@ body {
     .cards-sobre,
     .imagens-projeto,
     .dashboard-cards {
-        grid-template-columns: 1fr; /* Uma coluna */
+        flex-direction: column; /* Uma coluna */
     }
 
     /* Coloca o fluxo na vertical */
