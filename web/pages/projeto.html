@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre o Projeto | SESI SENAI</title>
+<link rel="stylesheet" href="../index.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="header-info">
+
+        <h1>🌐 Projeto IoT - Monitoramento Ambiental</h1>
+
+        <p>
+            <strong>Grupo:</strong> Neptunum |
+            <strong>Turma:</strong> 3° B
+        </p>
+
+    </div>
+
+    <nav class="menu">
+
+        <a href="index.html" class="nav-button">
+            Início
+        </a>
+
+        <a href="projeto.html" class="nav-button active">
+            Sobre o Projeto
+        </a>
+
+        <a href="dashboard.html" class="nav-button">
+            Dashboard Ao Vivo
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    <section class="apresentacao">
+
+        <h2>Sobre o Projeto</h2>
+
+        <p>
+            Este projeto foi desenvolvido com o objetivo de criar um
+            sistema de monitoramento ambiental utilizando tecnologias
+            de Internet das Coisas (IoT). O sistema coleta dados por
+            meio de sensores conectados ao microcontrolador e envia
+            essas informações em tempo real para um Dashboard Web.
+        </p>
+
+    </section>
+
+
+    <section class="cards-sobre">
+
+        <article class="card-sobre">
+
+            <h3>🎯 Objetivo</h3>
+
+            <p>
+                Monitorar as condições do ambiente em tempo real,
+                acompanhando informações como temperatura, umidade e
+                qualidade do ar.
+            </p>
+
+        </article>
+
+
+        <article class="card-sobre">
+
+            <h3>⚙️ Hardware</h3>
+
+            <p>
+                O projeto utiliza um microcontrolador ESP32 conectado
+                aos sensores responsáveis pela coleta das informações
+                ambientais.
+            </p>
+
+        </article>
+
+
+        <article class="card-sobre">
+
+            <h3>🌐 Arquitetura</h3>
+
+            <p>
+                Os dados são enviados pelo ESP32 utilizando o protocolo
+                MQTT. O broker recebe as mensagens e o Dashboard Web
+                se conecta através de WebSockets para exibir os dados
+                em tempo real.
+            </p>
+
+        </article>
+
+    </section>
+
+
+    <section class="galeria">
+
+        <h2>Conheça o Projeto</h2>
+
+        <div class="imagens-projeto">
+
+            <article class="imagem-card">
+
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Componentes.JPG?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original=10"
+                    alt="Componentes eletrônicos do projeto"
+                >
+
+                <h3>Componentes</h3>
+
+                <p>
+                    Sensores e componentes utilizados no sistema IoT.
+                </p>
+
+            </article>
+
+
+            <article class="imagem-card">
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqHUXSkiRLk1AakVedm8H1utIhvSmFDZgMwrLAmb1E-eg3C9eMaqaWuiUC&s=10"
+                    alt="Circuito eletrônico"
+                >
+
+                <h3>Hardware</h3>
+
+                <p>
+                    Montagem do circuito responsável pela coleta dos dados.
+                </p>
+
+            </article>
+
+
+            <article class="imagem-card">
+
+                <img
+                    src="https://www.hitecnologia.com.br/wp-content/uploads/2021/03/Protocolo-MQTT.jpg"
+                    alt="Tecnologia e conexão de dados"
+                >
+
+                <h3>Conexão MQTT</h3>
+
+                <p>
+                    Comunicação entre o dispositivo, broker e Dashboard.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <section class="arquitetura">
+
+        <h2>Como o Sistema Funciona?</h2>
+
+        <div class="fluxo">
+
+            <div class="fluxo-item">
+
+                <span>1</span>
+
+                <h3>Sensores</h3>
+
+                <p>
+                    Coletam os dados do ambiente.
+                </p>
+
+            </div>
+
+
+            <div class="seta">→</div>
+
+
+            <div class="fluxo-item">
+
+                <span>2</span>
+
+                <h3>ESP32</h3>
+
+                <p>
+                    Processa as informações coletadas.
+                </p>
+
+            </div>
+
+
+            <div class="seta">→</div>
+
+
+            <div class="fluxo-item">
+
+                <span>3</span>
+
+                <h3>MQTT Broker</h3>
+
+                <p>
+                    Recebe e distribui as mensagens.
+                </p>
+
+            </div>
+
+
+            <div class="seta">→</div>
+
+
+            <div class="fluxo-item">
+
+                <span>4</span>
+
+                <h3>Dashboard</h3>
+
+                <p>
+                    Exibe os dados ao vivo.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <h3>Integrantes do Grupo</h3>
+
+    <p>
+        Ana Clara Borges Cassoli |
+        Anna Beatriz do Nascimento |
+        Giovanna Costa Ramos |
+        Giovanna Elias Contieri |
+        Lara Aparecida Soares Silva |
+        Paola Rebeca Rubin Guevara
+    </p>
+
+    <p class="copyright">
+        2026 - Projeto IoT SESI SENAI Vinhedo
+    </p>
+
+</footer>
+
+</body>
+
+</html>
