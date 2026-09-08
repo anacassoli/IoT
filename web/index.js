@@ -192,60 +192,82 @@ if (statusConexao) {
     };
 
     // Salva a senha digitada pelo professor
-    function salvarSenha() {
+    // Salva a senha digitada pelo professor
+function salvarSenha() {
 
-        // Verifica se o campo de senha existe
-        if (!senha) return;
+    // Verifica se o campo de senha existe
+    if (!senha) return;
 
-        // Verifica se o campo está vazio
-        if (senha.value.trim() === "") {
+    // Verifica se o campo está vazio
+    if (senha.value.trim() === "") {
 
-            if (mensagemSenha) {
-                mensagemSenha.textContent =
-                    "Digite uma senha antes de salvar.";
-            }
-
-            return;
-        }
-
-        // Salva a senha no armazenamento local do navegador
-        localStorage.setItem("senhaProfessor", senha.value);
-
-        // Mostra uma mensagem de sucesso
         if (mensagemSenha) {
-            mensagemSenha.textContent = "Senha salva com sucesso!";
+            mensagemSenha.textContent =
+                "Digite uma senha antes de salvar.";
         }
+
+        return;
     }
 
-    // Carrega a senha que foi salva anteriormente
-    function carregarSenha() {
+    // Salva a senha no armazenamento local do navegador
+    localStorage.setItem("senhaProfessor", senha.value);
 
-        // Verifica se o campo de senha existe
-        if (!senha) return;
-
-        // Busca a senha armazenada no navegador
-        const senhaSalva = localStorage.getItem("senhaProfessor");
-
-        // Se existir uma senha salva, coloca no campo
-        if (senhaSalva) {
-            senha.value = senhaSalva;
-        }
+    // Mostra uma mensagem de sucesso
+    if (mensagemSenha) {
+        mensagemSenha.textContent = "Senha salva com sucesso!";
     }
+} // ← FECHA salvarSenha()
 
-    // Adiciona o evento de clique ao botão de salvar senha
-    if (botaoSalvarSenha) {
-        botaoSalvarSenha.addEventListener("click", salvarSenha);
+
+// Array com os integrantes do grupo
+const integrantesGrupo = [
+    "Ana Clara",
+    "Anna Beatriz",
+    "Giovanna Costa",
+    "Giovanna Contieri",
+    "Lara",
+    "Paola"
+];
+
+// Salva os integrantes no armazenamento local
+localStorage.setItem(
+    "IntegrantesGrupo",
+    JSON.stringify(integrantesGrupo)
+);
+
+
+// Carrega a senha que foi salva anteriormente
+function carregarSenha() {
+
+    // Verifica se o campo de senha existe
+    if (!senha) return;
+
+    // Busca a senha armazenada no navegador
+    const senhaSalva = localStorage.getItem("senhaProfessor");
+
+    // Se existir uma senha salva, coloca no campo
+    if (senhaSalva) {
+        senha.value = senhaSalva;
     }
+}
 
-    // Executa quando todo o HTML da página estiver carregado
-    document.addEventListener("DOMContentLoaded", function () {
 
-        console.log("Dashboard IoT Grupo 06 iniciado.");
+// Adiciona o evento de clique ao botão de salvar senha
+if (botaoSalvarSenha) {
+    botaoSalvarSenha.addEventListener("click", salvarSenha);
+}
 
-        // Carrega a senha salva
-        carregarSenha();
 
-        // Inicia a conexão com o MQTT
-        conectarMQTT();
-    });
+// Executa quando todo o HTML da página estiver carregado
+document.addEventListener("DOMContentLoaded", function () {
+
+    console.log("Dashboard IoT Grupo 06 iniciado.");
+
+    // Carrega a senha salva
+    carregarSenha();
+
+    // Inicia a conexão com o MQTT
+    conectarMQTT();
+});
+
 }
