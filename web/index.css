@@ -623,4 +623,99 @@ body {
     color: #64748b; /* Cor cinza */
     font-size: 13px; /* Tamanho pequeno */
 }
+/* ================================
+   RESPONSIVIDADE
+================================ */
 
+/* Configurações para telas menores que 900px */
+@media (max-width: 900px) {
+
+    /* Coloca o cabeçalho na vertical */
+    .header {
+        flex-direction: column; /* Elementos ficam um abaixo do outro */
+        text-align: center; /* Centraliza o texto */
+    }
+
+    /* Faz os cards ocuparem uma coluna */
+    .cards-sobre,
+    .imagens-projeto,
+    .dashboard-cards {
+        grid-template-columns: 1fr; /* Uma coluna */
+    }
+
+    /* Coloca o fluxo na vertical */
+    .fluxo {
+        flex-direction: column;
+    }
+
+    /* Gira as setas para acompanhar o fluxo vertical */
+    .seta {
+        transform: rotate(90deg);
+    }
+
+    /* Coloca o topo do Dashboard na vertical */
+    .dashboard-topo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    /* Alinha o status à esquerda */
+    .status-container {
+        text-align: left;
+    }
+}
+
+
+/* Configurações para celulares */
+@media (max-width: 600px) {
+
+    /* Diminui o espaçamento do cabeçalho */
+    .header {
+        padding: 20px 15px;
+    }
+
+    /* Diminui o tamanho do título */
+    .header-info h1 {
+        font-size: 20px;
+    }
+
+    /* Faz o menu ocupar toda a largura */
+    .menu {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    /* Faz os botões ocuparem toda a largura */
+    .nav-button {
+        width: 100%;
+    }
+
+    /* Diminui o espaçamento da página */
+    .pagina {
+        padding: 25px 15px;
+    }
+
+    /* Diminui o espaço interno dos cards */
+    .apresentacao,
+    .card-sobre,
+    .card-dado,
+    .senha-section {
+        padding: 22px;
+    }
+
+    /* Coloca campo e botão de senha um abaixo do outro */
+    .senha-container {
+        flex-direction: column;
+    }
+
+    /* Faz o botão ocupar toda a largura */
+    .senha-container button {
+        width: 100%;
+    }
+
+    /* Diminui o tamanho dos valores no celular */
+    .valor {
+        font-size: 35px;
+    }
+}
